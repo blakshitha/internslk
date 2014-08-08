@@ -1,0 +1,84 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<?php
+$title = 'Internships';
+$this->headTitle($title);
+?>
+<div class="left-filter-box">
+	<h2>Refine Search</h2>
+	<ul class="level1-filer">
+		<li>Location<img src="img/help.png" title="Filter by City. Selecting none will show all the search results" /></li>
+			<ul class="level2-filer">
+				<?php 
+					foreach($locations as $location){
+						?><li><input type="checkbox" value="<?php echo($location->id); ?>" /><?php echo($location->name); ?></li><?php
+					}
+				?>
+			</ul>
+		<li>Full/Part Time<img src="img/help.png" title="Filter by Full/Part time. Selecting none will show both fulltime and parttime internships." /></li>
+			<ul class="level2-filer">
+				<li><input type="checkbox" />Fulltime</li>
+				<li><input type="checkbox" />Parttime</li>
+			</ul>
+		<li>Compensation<img src="img/help.png" title="Filter by Compensation. Selecting none will show will show both paid and unpaid internships."  /></li>
+			<ul class="level2-filer">
+				<li><input type="checkbox" />Paid</li>
+				<li><input type="checkbox" />Unpaid</li>
+			</ul>
+		<li>Start Date <img src="img/help.png" title="Select the radio button to choose the period of dates and then select the date in the date picker/textbox" /></li>
+			<ul class="level2-filer">
+				<li><input type="radio" name="startDateRefineRadio" checked="checked" />On or Before</li>
+				<li><input type="radio" name="startDateRefineRadio" />After</li>
+				<li><input type="text" id="startDateRefine" /></li>
+			</ul>
+		<li>Keywords<img src="img/help.png" title="Put any keyword in a comma separated string" /></li>
+			<ul class="level2-filer">
+				<li><input type="text" /></li>
+			</ul>
+	</ul>
+</div>
+<div class="right-box">
+	<h2>Sorting</h2>
+		<ul class="level1-filer">
+		<li>Sort By<img src="img/help.png" title="Click on the item that you need to sort by." /></li>
+			<ul class="level2-filer">
+				<li class="sort-selected">Application Deadline Date</li>
+				<li>Newest First</li>
+				<li>Start Date Ascending</li>
+				<li>Start Date Descending</li>
+			</ul>
+	</ul>
+</div>
+<div class="jumbotron internshipListing">
+	<div class="quickRefine"><input type="text" placeholder="Quickly enter what you need to refine in the below search.  ex: paid, colombo, computer" /></div>
+	<div class="internshipListingBox">
+		<ul>
+			<?php 
+				for($i=0; $i < 20; $i++){
+					$paidClass = "not-paid-icon";
+					$paidTitle = "This is an unpaid internship";
+					if($i%2==0){
+						$paidClass = "paid-icon";
+						$paidTitle = "This is a paid internship";
+					}
+			?>
+			<li class="internshipListItemLi">
+				<div class="internshipListItemDiv">
+					<div class="internshipHeader">
+						Software Engineer Internship - Hsenid International (Pvt) Limited
+						<div title="<?php echo($paidTitle); ?>" class="<?php echo($paidClass); ?>">&nbsp;</div>
+					</div>
+					<div class="internshipDescrition">
+						<p>
+						The best opy for u dsdi jadah hahdahd hdhfkd jadahad hadah had hadad ahdadad adadad ada dada
+						ada dada dada ad ad adajlakjda ldal djalkd jslkd jalk a;lda;lsdk ladjaldal sdjald aldjal ald lajd lajdl kajd lad lajd lajl djald jadlak jlajdlad
+						ad ald ja ldka ldj
+						</p>
+					</div>
+				</div>
+			</li>
+			<?php
+				}
+			?>
+		</ul>
+	</div>
+</div>

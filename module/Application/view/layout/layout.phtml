@@ -1,0 +1,114 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Interns.LK')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+      	?>
+      
+      	<input id="basePath" type="hidden" value="<?php echo($this->basePath()); ?>" />
+      	<input id="hasLoggedIn" type="hidden" value="<?php echo(isset($name)); ?>" />
+      	
+      	<script type="text/javascript" src="<?php echo $this->basePath(); ?>/js/jquery-ui.js"></script>
+		<script type="text/javascript" src="<?php echo $this->basePath(); ?>/js/jquery.bpopup.min.js"></script>
+		<script type="text/javascript" src="<?php echo $this->basePath(); ?>/js/interns.js"></script>
+		
+		
+		
+    </head>
+   
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Sri Lanka Largest Internships Portal"/>&nbsp;<?php echo $this->translate('Interns.LK') ?></a>
+                    
+                </div>
+                <div class="collapse navbar-collapse">
+                	<?php
+						echo $this->navigation('navigation')
+						->menu()
+						->setMinDepth(0)
+						->setMaxDepth(0)
+						->setUlClass('nav navbar-nav');
+					?>
+                    
+	                <ul class="nav navbar-nav navbar-nav-right">
+	                        <li><p id="welcomeName">Welcome <?php if(isset($name)) echo($name); ?></p><a href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/logout.png') ?>" alt="Signout"/></a></li>
+	                </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <p>&copy; by interns.lk - <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <div class="login-box">
+			<div class="form">
+		      <h1>Sign in</h1>
+		      <div class="line"></div>
+		      
+		      <!-- If you don't want a social buttons, delete all of these code -->
+		        <a href="#" class="btn-facebook">Connect with Facebook</a>
+		        <a href="#" class="btn-twitter">Connect with Twitter</a>
+		      <!-- Till here -->
+		      
+		      
+		      <!-- Span class ie-placeholder is there for IE browser. IE doesn't support placeholder attribute -->
+		      <form action="#" class="input-form">
+		        <span class="ie-placeholders">Email:</span><input id="loginUsername" type="text" placeholder="Email">
+		        <span class="ie-placeholders">Password:</span><input id="loginPassword" type="password" placeholder="Password">
+		        <a href="#" class="forgotten-password-link">Forgotten password</a>
+		        <input id="loginButton" type="submit" value="Sign in" class="btn-sign-in btn-orange close1">
+		      </form>
+		     
+		      <!-- ERROR STATE 
+		      <div class="error-box red">
+		        <span class="error-message"><b>Incorrect</b> login or password.</span>
+		      </div>
+		           
+		      <div class="sign-link">
+		        Don't have an account? <a href="registration.html">Sign up</a>
+		      </div> 
+		      -->
+		    </div>
+		    <!-- FORGOTTEN PASSWORD  -->
+		      <div class="forgotten-password-box">
+		        <form class="input-form">
+		          <span class="ie-placeholders">Email:</span><input type="text" placeholder="E-mail" class="forgotten-password-email">
+		<p>We'll send you an e-mail with the istructions to reset your password.</p>
+		          <input type="submit" value="Send" class="btn-forgot btn-orange"><br><br>
+					
+		        </form>
+		      </div>
+		</div>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

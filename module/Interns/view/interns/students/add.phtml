@@ -1,0 +1,93 @@
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+      appId      : '700508199968760',                        // App ID from the app dashboard
+      status     : true,                                 // Check Facebook Login status
+      xfbml      : true                                  // Look for social plugins on the page
+    });
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<?php
+$title = 'Student Registration';
+$this->headTitle($title);
+?>
+<div class="jumbotron">
+    <h1><?php echo sprintf($this->translate('%s'.$title.'%s'), '<span class="zf-green">', '</span>') ?></h1>
+    <?php
+    $form = $this->form;
+	$form->setAttribute('action', $this->url('student', array('action' => 'add')));
+	$form->prepare();
+	
+	echo $this->form()->openTag($form);
+	echo $this->formHidden($form->get('id'));
+	?>
+	<table>
+		<tr>
+			<td valign="top">
+		<label>Fill in the form below</label>
+		<table id='simpleForm'>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('name')); ?></td>
+			<td><?php echo $this->formInput($form->get('name')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("name"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('email')); ?></td>
+			<td><?php echo $this->formInput($form->get('email')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("email"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('phone')); ?></td>
+			<td><?php echo $this->formInput($form->get('phone')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("phone"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('password')); ?></td>
+			<td><?php echo $this->formInput($form->get('password')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("password"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('confirmPassword')); ?></td>
+			<td><?php echo $this->formInput($form->get('confirmPassword')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("confirmPassword"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td colspan='2'><div class="btn btn-success btn-lg" ><?php echo $this->formSubmit($form->get('submit')); ?></div></td>
+		</tr>
+	</table></td>
+	<td valign="center" align="center" >
+		<span style="font-size:60px; font-weight: bold;padding-right:50px; padding-left:50px">OR</span>
+	</td>
+			<td valign="top">
+			<label>Register via Facebook</label>
+			<fb:registration border_color="green" width="420px" redirect_uri="http://localhost:82/internslk/public/student/add" fields="name,email,password" /></td>
+		</tr>
+	</table>
+	<?php
+	
+	echo "<br/>";
+	echo $this->form()->closeTag();
+    
+    ?>
+</div>

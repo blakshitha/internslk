@@ -1,0 +1,82 @@
+<?php
+$title = 'Student Profile';
+$this->headTitle($title);
+?>
+<div class="jumbotron">
+    <h1><?php echo sprintf($this->translate('%s'.$title.'%s'), '<span class="zf-green">', '</span>') ?></h1>
+    <?php
+    $form = $this->form;
+	$form->setAttribute('action', $this->url('student', array('action' => 'edit', 'id' => $this->id,)));
+	$form->prepare();
+	
+	echo $this->form()->openTag($form);
+	echo $this->formHidden($form->get('id'));
+	?>
+	<table>
+		<tr>
+			<td valign="top">
+		<table id='simpleForm'>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('name')); ?></td>
+			<td><?php echo $this->formInput($form->get('name')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("name"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('email')); ?></td>
+			<td><?php echo $this->formInput($form->get('email')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("email"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('phone')); ?></td>
+			<td><?php echo $this->formInput($form->get('phone')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("phone"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('resume')); ?></td>
+			<td><?php echo $this->formFile($form->get('resume')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("resume"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('cover_letter')); ?></td>
+			<td><?php echo $this->formFile($form->get('cover_letter')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("cover_letter"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<!-- 
+		<tr>
+			<td><?php// echo $this->formLabel($form->get('password')); ?></td>
+			<td><?php //echo $this->formInput($form->get('password')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("password"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php //echo $this->formLabel($form->get('confirmPassword')); ?></td>
+			<td><?php //echo $this->formInput($form->get('confirmPassword')); ?></td>
+		</tr>
+		
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("confirmPassword"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		-->
+		<tr>
+			<td colspan='2'><div class="btn btn-success btn-lg" ><?php echo $this->formSubmit($form->get('submit')); ?></div></td>
+		</tr>
+	</table></td>
+		</tr>
+	</table>
+	<?php
+	echo "<br/>";
+	echo $this->form()->closeTag();
+    
+    ?>
+</div>

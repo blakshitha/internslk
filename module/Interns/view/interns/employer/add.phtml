@@ -1,0 +1,112 @@
+<div id="fb-root"></div>
+<?php
+$title = 'Employer Registration';
+$this->headTitle($title);
+?>
+<div class="jumbotron">
+    <h1><?php echo sprintf($this->translate('%s'.$title.'%s'), '<span class="zf-green">', '</span>') ?></h1>
+    <?php
+    $form = $this->form;
+	$form->setAttribute('action', $this->url('employer', array('action' => 'add')));
+	$form->prepare();
+	
+	echo $this->form()->openTag($form);
+	echo $this->formHidden($form->get('id'));
+	?>
+	<table>
+		<tr>
+			<td valign="top">
+		<label>Fill in the form below</label>
+		<table id='simpleForm'>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('company_name')); ?></td>
+			<td><?php echo $this->formInput($form->get('company_name')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("company_name"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('contact_person_name')); ?></td>
+			<td><?php echo $this->formInput($form->get('contact_person_name')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("contact_person_name"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('email')); ?></td>
+			<td><?php echo $this->formInput($form->get('email')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("email"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('phone')); ?></td>
+			<td><?php echo $this->formInput($form->get('phone')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("phone"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('location_id')); ?></td>
+			<td><?php echo $this->formSelect($form->get('location_id')); ?></td>
+			
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("location_id"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('website')); ?></td>
+			<td><?php echo $this->formInput($form->get('website')); ?></td>
+			
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("website"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('department')); ?></td>
+			<td><?php echo $this->formInput($form->get('department')); ?></td>
+			
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("department"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('password')); ?></td>
+			<td><?php echo $this->formInput($form->get('password')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("password"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td><?php echo $this->formLabel($form->get('confirmPassword')); ?></td>
+			<td><?php echo $this->formInput($form->get('confirmPassword')); ?></td>
+		</tr>
+		<tr>
+			<td colspan='2' ><?php echo $this->formElementErrors($form->get("confirmPassword"), array('class' => "formError", 'message' => "errormessage")); ?> </td>
+		</tr>
+		<tr>
+			<td colspan='2'><div class="btn btn-success btn-lg" ><?php echo $this->formSubmit($form->get('submit')); ?></div></td>
+		</tr>
+	</table></td>
+	<td valign="center" align="center" >
+		<span style="font-size:60px; font-weight: bold;padding-right:50px; padding-left:50px">&nbsp;</span>
+	</td>
+	<td valign="top">
+			<label>What you get when with Interns.LK</label>
+			<br />
+			<br />
+			<ul class="whatuget-ul">
+				<li>Post the internships that your company offers</li>
+				<li>Get access to our resources/documents to know how you can me your internship better</li>
+				<li>Become a partner with Interns.LK</li>
+			</ul>
+	</td>
+	</tr>
+	</table>
+	<?php
+	
+	echo "<br/>";
+	echo $this->form()->closeTag();
+    
+    ?>
+</div>
