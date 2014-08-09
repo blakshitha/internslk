@@ -1,0 +1,15 @@
+{
+    "name": "ewgo/solarium-module",
+    "description": "Zend Framework 2 integration with solarium solr client",
+    "keywords": ["zf2", "solr", "solarium", "search"],
+    "license": "MIT",
+    "type": "zf2-module",
+    "require": {
+        "zendframework/zendframework": "2.*",
+        "solarium/solarium": "3.*"
+    },
+    "autoload": {
+        "psr-0": { "EwgoSolarium": "src/" },
+        "classmap": [ "./Module.php" ]
+    }
+}
